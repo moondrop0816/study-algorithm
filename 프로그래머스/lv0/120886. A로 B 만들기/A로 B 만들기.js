@@ -1,6 +1,4 @@
 function solution(before, after) {
-  before = before.split('').sort().join('');
-  after = after.split('').sort().join('');
 
-  return before === after ? 1 : 0
+  return before.split('').sort().join('') === after.split('').sort().join('') ? 1 : 0
 }
