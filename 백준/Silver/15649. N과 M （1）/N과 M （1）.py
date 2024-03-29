@@ -1,7 +1,18 @@
-from itertools import permutations
 N, M = map(int, input().split())
-ls = list(permutations(range(1, N + 1), M))
+s = []
+visited = [False] * (N+1)
 
-for i in ls:
-    for j in i:
-        print(j, end=' ')
+def dfs():
+    if len(s) == M:
+        print(' '.join((map(str, s))))
+        return
+    for i in range(1, N+1):
+        if visited[i]:
+            continue
+        visited[i] = True
+        s.append(i)
+        dfs()
+        s.pop()
+        visited[i] = False
+
+dfs()
