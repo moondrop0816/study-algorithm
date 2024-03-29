@@ -1,20 +1,20 @@
-n, m = map(int, input().split())
-nums = sorted(list(map(int, input().split())))
-visited = [False] * n
-temp = []
+N, M = map(int, input().split())
+num_list = sorted(list(map(int, input().split())))
+s = []
+visited = [False] * N
 
 def dfs():
-    if len(temp) == m:
-        print(*temp)
+    if len(s) == M:
+        print(' '.join((map(str, s))))
         return
     remember_me = 0
-    for i in range(n):
-        if not visited[i] and remember_me != nums[i]:
+    for i in range(N):
+        if not visited[i] and remember_me != num_list[i]:
             visited[i] = True
-            temp.append(nums[i])
-            remember_me = nums[i]
+            s.append(num_list[i])
+            remember_me = num_list[i]
             dfs()
+            s.pop()
             visited[i] = False
-            temp.pop()
 
 dfs()
