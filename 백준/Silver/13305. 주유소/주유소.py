@@ -1,12 +1,12 @@
+import sys
+input = sys.stdin.readline
 n = int(input())
 road = list(map(int, input().split()))
 oil = list(map(int, input().split()))
-cost = 0
+min_cost = 1e9
+result = 0
 for i in range(len(oil)-1):
-    if i != 0 and oil[i-1] < oil[i]:
-        continue
-    if oil[i] >= oil[i+1]:
-        cost += oil[i] * road[i]
-    elif oil[i] < oil[i+1]:
-        cost += (oil[i] * road[i]) + (oil[i] * road[i+1])
-print(cost)
+    if oil[i] < min_cost:
+        min_cost = oil[i]
+    result += min_cost * road[i]
+print(result)
